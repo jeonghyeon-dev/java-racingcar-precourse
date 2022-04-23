@@ -4,21 +4,21 @@ import java.util.Objects;
 
 public class Car implements Comparable<Car>{
     public static final int MIN_COUNT_MOVABLE = 4;
-    private Name name;
+    private CarName carName;
     private int position;
 
     public Car() {
-        this.name = new Name();
+        this.carName = new CarName();
         this.position = 0;
     }
 
-    public Car(String name) {
-        this.name = new Name(name);
+    public Car(String name) throws IllegalArgumentException{
+        this.carName = new CarName(name);
         this.position = 0;
     }
 
     public String getName() {
-        return this.name.getName();
+        return this.carName.getName();
     }
 
     public void move(int moveCount) {
@@ -57,6 +57,6 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, position);
+        return Objects.hash(carName, position);
     }
 }
