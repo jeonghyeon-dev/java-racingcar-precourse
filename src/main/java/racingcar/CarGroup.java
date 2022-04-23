@@ -34,16 +34,18 @@ public class CarGroup {
             winners.add(thisCar);
     }
 
-    public void addCar(String carName){
+    public boolean addCar(String carName) {
         try {
             cars.add(new Car(carName));
-        }catch (IllegalArgumentException illegalArgumentException){
+        } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
+            return false;
         }
+        return true;
     }
 
     public void move(int moveCount) {
-        for(Car car : this.getCars()){
+        for (Car car : this.getCars()) {
             car.move(moveCount);
         }
     }
