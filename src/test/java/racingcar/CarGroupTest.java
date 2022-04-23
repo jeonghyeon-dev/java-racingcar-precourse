@@ -1,19 +1,23 @@
 package racingcar;
 
-import org.assertj.core.api.Assert;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.CollectionUtils;
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarGroupTest {
+
+    @Test
+    void 자동차_추가_테스트() {
+        CarGroup actualCarGroup = new CarGroup();
+        actualCarGroup.addCar("test");
+
+        assertThat(actualCarGroup.getCars().get(0)).isEqualTo(new Car("test"));
+    }
 
     @Test
     void 자동차_그룹_생성_테스트() {
@@ -50,5 +54,29 @@ public class CarGroupTest {
         ArrayList<Car> actualWinners = carGroup.getWinnerGroups();
 
         assertThat(actualWinners.equals(expectWinners)).isTrue();
+    }
+
+    @Test
+    void 자동차_이동_테스트() {
+
+        CarGroup actualGroup = new CarGroup();
+
+        actualGroup.addCar("car1");
+        actualGroup.addCar("car2");
+        actualGroup.addCar("car3");
+
+        actualGroup.move(5);
+
+        CarGroup expectGroup = new CarGroup();
+
+        expectGroup.addCar("car1");
+        expectGroup.addCar("car2");
+        expectGroup.addCar("car3");
+
+        for(Car car : expectGroup.getCars()){
+            car.move(5);
+        }
+
+        assertThat(actualGroup.getCars().equals(expectGroup.getCars())).isTrue();
     }
 }
