@@ -6,6 +6,10 @@ public class CarGroup {
 
     private ArrayList<Car> cars;
 
+    public CarGroup() {
+        this.cars = new ArrayList<Car>();
+    }
+
     public CarGroup(ArrayList<Car> cars) {
         this.cars = new ArrayList<Car>();
         this.cars.addAll(cars);
@@ -30,4 +34,17 @@ public class CarGroup {
             winners.add(thisCar);
     }
 
+    public void addCar(String carName){
+        try {
+            cars.add(new Car(carName));
+        }catch (IllegalArgumentException illegalArgumentException){
+            System.out.println(illegalArgumentException.getMessage());
+        }
+    }
+
+    public void move(int moveCount) {
+        for(Car car : this.getCars()){
+            car.move(moveCount);
+        }
+    }
 }
