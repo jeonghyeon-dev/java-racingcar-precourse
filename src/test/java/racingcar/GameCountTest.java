@@ -21,7 +21,8 @@ public class GameCountTest {
     @Test
     void 시도_횟수는_숫자여야_합니다() {
         System.setOut(new PrintStream(outputStreamCaptor));
-        GameCount gameCount = new GameCount("test");
+        GameCount gameCount = new GameCount();
+        gameCount.setGameCount("test");
         assertEquals(Message.getGameCountMustBeDigits(), outputStreamCaptor.toString()
                 .trim());
     }
