@@ -1,22 +1,42 @@
 package racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarGroupTest {
+
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
 
     @Test
     void 자동차_추가_테스트() {
         CarGroup actualCarGroup = new CarGroup();
         actualCarGroup.addCar("test");
-
         assertThat(actualCarGroup.getCars().get(0)).isEqualTo(new Car("test"));
+    }
+
+    @Test
+    void 자동차_이름은_5자리_이하만_가능합니다() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+        CarGroup actualCarGroup = new CarGroup();
+        actualCarGroup.addCar("Park JeongHyeon");
+        assertEquals(Message.getNameCanNotBeMoreThen5Digits(), outputStreamCaptor.toString()
+                .trim());
     }
 
     @Test
