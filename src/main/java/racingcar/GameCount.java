@@ -6,22 +6,28 @@ public class GameCount {
 
     private static int gameCount;
 
-    public GameCount(String gameCount) {
-        try{
-            validationForGameCountType(gameCount);
-        }catch (IllegalArgumentException illegalArgumentException){
-            System.out.println(illegalArgumentException.getMessage());
-            return;
-        }
-        this.gameCount = Integer.parseInt(gameCount);
-    }
-
     public GameCount() {
         this.gameCount = 0;
     }
 
-    private void validationForGameCountType(String gameCount) {
-        if(!gameCount.chars().allMatch(Character :: isDigit));
+    public boolean setGameCount(String gameCount) {
+        try {
+            validationForGameCountType(gameCount);
+            this.gameCount = Integer.parseInt(gameCount);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public static int getGameCount() {
+        return gameCount;
+    }
+
+    private void validationForGameCountType(String gameCount) throws IllegalArgumentException {
+        if (!gameCount.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException(Message.getGameCountMustBeDigits());
+        }
     }
 }
