@@ -1,8 +1,9 @@
 package racingcar;
 
-import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.model.GameCount;
+import racingcar.view.Message;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
