@@ -12,19 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarNameTest {
 
-    private final PrintStream standardOut = System.out;
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-
-    @BeforeEach
-    public void setUp() {
-        System.setOut(new PrintStream(outputStreamCaptor));
-    }
-
     @Test
-    void 이름은_5자리_이하만_가능_합니다() {
-        System.setOut(new PrintStream(outputStreamCaptor));
-        CarName carName = new CarName("Park JeongHyeon");
-        assertEquals(Message.getNameCanNotBeMoreThen5Digits(), outputStreamCaptor.toString()
-                .trim());
+    void 자동차_이름_생성_테스트() {
+        CarName actualCarName = new CarName("test");
+        assertThat(actualCarName.getName()).isEqualTo("test");
     }
 }
