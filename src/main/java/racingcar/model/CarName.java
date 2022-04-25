@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.model;
+
+import racingcar.view.Message;
 
 public class CarName {
     public static final int MAX_LENGTH = 5;

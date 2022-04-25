@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.model.CarGroup;
+import racingcar.model.GameCount;
+import racingcar.view.GameManager;
 
 import java.util.ArrayList;
 

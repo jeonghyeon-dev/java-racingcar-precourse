@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.model;
 
-import org.junit.platform.commons.util.StringUtils;
+import racingcar.view.Message;
 
 public class GameCount {
 
